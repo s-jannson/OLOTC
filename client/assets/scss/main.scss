@@ -1,0 +1,22 @@
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+html {
+    background: #F8F8F8;
+}
+
+$primary: #FF6059;
+.echarts {
+    min-height: 50rem !important;
+    min-width: 100%;
+    margin: 0rem 0rem 0rem -4rem;
+
+    // @include mobile {
+    //   min-width: 0;
+    //   margin: 0rem 0rem 0rem -2rem;
+    // }
+  }
+
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";

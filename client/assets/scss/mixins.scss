@@ -1,0 +1,173 @@
+/* screen sizes */
+$mobile-width: 600px;
+$mobile-landscape-width: 768px;
+$tablet-width: 992px;
+$desktop-width: 1200px;
+$text-xl-size: 18px;
+$text-xxl-size: 20px;
+
+@mixin mobile {
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin mobile-landscape {
+  @media (max-width: #{$mobile-landscape-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  box-sizing: border-box;
+  @include desktop {
+    max-width: 1170px;
+  }
+
+  @include tablet {
+    max-width: 970px;
+  }
+
+  @include mobile-landscape {
+    max-width: 750px;
+    padding: 0 15px;
+  }
+
+  @include mobile {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+}
+
+@mixin desktop-container {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@mixin default-button {
+  height: 41px;
+  font-size: 16px;
+  border-radius: 5px;
+  min-width: 115px;
+  color: $white;
+  .icon {
+    margin-right: 5px;
+  }
+  &.green {
+    border: 1px solid #038e92;
+    background: linear-gradient(to bottom, #04bec4 0%, #03979c 100%);
+    &:hover {
+      background: linear-gradient(to bottom, #04bec4 0%, #03898d 100%);
+    }
+  }
+  &.gray {
+    border: 1px solid #e6e5e5;
+    background: linear-gradient(to bottom, #fff 0%, #f2f2f2 100%);
+    color: $text;
+    &:hover {
+      background: linear-gradient(to bottom, #fff 0%, #ebebeb 100%);
+    }
+  }
+  &.small {
+    height: 32px;
+    font-size: 12px;
+  }
+  &.big {
+    height: 52px;
+    font-size: 15px;
+  }
+}
+
+@mixin default-input {
+  border: 1px solid #e8eff4;
+  width: 100%;
+  padding: 7px 15px;
+  height: 41px;
+  border-radius: 0;
+  box-shadow: none;
+  &:disabled {
+    background-color: $disabled-input;
+  }
+}
+
+@mixin form-field {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
+  /deep/ {
+    .label {
+      min-width: 40%;
+      color: #627d8e;
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+  }
+  .control {
+    width: 60%;
+    /deep/ input {
+      @include default-input;
+    }
+    /deep/ .select {
+      width: 100%;
+      height: auto;
+      select {
+        @include default-input;
+      }
+    }
+  }
+  @include mobile {
+    /deep/ .label {
+      min-width: 100%;
+    }
+    .control {
+      width: 100%;
+    }
+  }
+}
+
+@mixin heading {
+  .heading {
+    padding: 10px 30px;
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    color: $link-color;
+    align-items: center;
+    font-size: 18px;
+    text-transform: none;
+    letter-spacing: normal;
+    margin: 0;
+    h4 {
+      font-weight: 400;
+      margin: 0 0 0 10px;
+    }
+  }
+}
+
+@mixin border-container {
+  background: #fff;
+  border: 1px solid #e8eff4;
+  border-bottom: 2px solid #e8eff4;
+  border-radius: 5px;
+}
