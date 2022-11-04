@@ -11,20 +11,31 @@
             br
             | The community is relying on valid data coming from such tools, to
             | make informed decisions and payments from community wallets to contributors
-    LastReport(price='0.05', date='2022-10-22 00:00:00')
-    //- LastReport(:price='0.05', :date='')
-    TradeHistoryChart
+    //- LastReport(price='0.05', date='2022-10-22 00:00:00')
+    div(v-if="tradesFromDb")
+      LastReport(:price="tradesFromDb[tradesFromDb.length-1].price_usd" , :date="new Date(tradesFromDb[tradesFromDb.length-1].datetime)")
+      TradeHistoryChart(:trades="tradesFromDb")
+    TradeReport
+    Todo
 </template>
 
 <script>
 import LastReport from '~/components/LastReport'
 import TradeHistoryChart from '~/components/TradeHistoryChart'
+import TradeReport from '~/components/TradeReport'
+import Todo from '~/components/Todo'
 
 export default {
   name: 'IndexPage',
   components: {
     LastReport,
     TradeHistoryChart,
+    TradeReport,
+    Todo,
+  },
+  async asyncData({ $axios }) {
+    const tradesFromDb = await $axios.$get('http://localhost:5000/')
+    return { tradesFromDb }
   },
 }
 </script>

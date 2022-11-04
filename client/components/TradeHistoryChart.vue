@@ -28,56 +28,14 @@ export default {
   provide: {
     // [THEME_KEY]: 'dark',
   },
+  props: {
+    trades: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
-    const tradesData = [
-      {
-        datetime: 'Sat, 15 Aug 2022 00:00:00 GMT',
-        price_usd: 0.03,
-        quantity: 17000.0,
-        total_value: 2960.0,
-      },
-      {
-        datetime: 'Sun, 03 Sep 2022 00:00:00 GMT',
-        price_usd: 0.05,
-        quantity: 20000.0,
-        total_value: 1000.0,
-      },
-      {
-        datetime: 'Sat, 18 Sep 2021 00:00:00 GMT',
-        price_usd: 0.06,
-        quantity: 25000.0,
-        total_value: 2960.0,
-      },
-      {
-        datetime: 'Sun, 02 Oct 2022 00:00:00 GMT',
-        price_usd: 0.06,
-        quantity: 50000.0,
-        total_value: 1000.0,
-      },
-      {
-        datetime: 'Sat, 08 Oct 2021 00:00:00 GMT',
-        price_usd: 0.065,
-        quantity: 70000.0,
-        total_value: 2960.0,
-      },
-      {
-        datetime: 'Sun, 21 Oct 2022 00:00:00 GMT',
-        price_usd: 0.07,
-        quantity: 300000.0,
-        total_value: 1000.0,
-      },
-    ]
-
-    // tradesData.map(Object.values)
-    const tradesData2 = [
-      ['2022-08-15T00:00:00.000Z', 0.03, 17000, 2960],
-      ['2022-09-03T00:00:00.000Z', 0.05, 20000, 1000],
-      ['2021-09-18T00:00:00.000Z', 0.06, 25000, 2960],
-      ['2022-10-02T00:00:00.000Z', 0.06, 50000, 1000],
-      ['2021-10-08T00:00:00.000Z', 0.065, 70000, 2960],
-      ['2022-10-21T00:00:00.000Z', 0.07, 300000, 1000],
-    ]
-
+    const tradesData = this.trades.map(Object.values)
     const dollarUSLocale = Intl.NumberFormat('en-US')
 
     return {
@@ -187,7 +145,7 @@ export default {
           scale: true,
         },
         dataset: {
-          source: tradesData2,
+          source: tradesData,
           dimensions: ['timestamp', 'price', 'size', 'totalValue'],
         },
         series: [
