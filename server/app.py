@@ -12,6 +12,8 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 db = SQLAlchemy(app)
+with app.app_context():
+    db.create_all()
 
 class trade(db.Model):
     id = db.Column('entry_id', db.Integer, primary_key = True)
