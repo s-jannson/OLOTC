@@ -31,7 +31,7 @@ class trade(db.Model):
         self.total_value = total_value
 
 
-@app.route('/', methods=['GET'])
+@app.route('/api/', methods=['GET'])
 @cross_origin()
 def get_all_trades():
     trades = trade.query.order_by(trade.datetime).all()
@@ -41,7 +41,7 @@ def get_all_trades():
         output.append(trade_data)
     return jsonify(output)
 
-@app.route('/new', methods = ['POST'])
+@app.route('/api/new', methods = ['POST'])
 @cross_origin()
 def new_otc_trade():
     data = request.get_json()

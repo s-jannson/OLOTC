@@ -50,7 +50,7 @@ export default {
           price: this.price,
           datetime: this.selectedDatetime,
         }
-        const res = await this.$axios.$post('/new', trade)
+        const res = await this.$axios.$post('https://olotc.xyz/api/new', trade)
         if (res === 'ok') {
           this.$buefy.toast.open({
             message: 'Trade submitted successfully! Thank you!',

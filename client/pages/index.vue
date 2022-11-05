@@ -34,7 +34,7 @@ export default {
     Todo,
   },
   async asyncData({ $axios }) {
-    const tradesFromDb = await $axios.$get('/')
+    const tradesFromDb = await $axios.$get('https://olotc.xyz/api/')
     if (tradesFromDb.length > 0) {
       return { tradesFromDb }
     }
