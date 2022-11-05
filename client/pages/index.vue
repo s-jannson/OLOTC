@@ -34,7 +34,7 @@ export default {
     Todo,
   },
   async asyncData({ $axios }) {
-    const tradesFromDb = await $axios.$get('http://localhost:5000/')
+    const tradesFromDb = await $axios.$get('/')
     if (tradesFromDb.length > 0) {
       return { tradesFromDb }
     }
